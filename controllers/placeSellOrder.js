@@ -1,40 +1,54 @@
-
-StockMarketApplication.PlaceSellOrderController =Ember.ObjectController.extend({
+StockMarketApplication.PlaceSellOrderController = Ember.ObjectController.extend({
     //needs: ['marketDepth'],
     logoUrl: function() {
         //TODO: whatever this first gets set to never changes. but should change when controllers.marketdepth.model changes :(
         var company = this.get('model'); //this.get('controllers.marketDepth.model');
         var symbol = company.get('symbolURL');
-        return  symbol;
+        return symbol;
     }.property('controllers.marketDepth.model'),
 
     actions: {
-        cancel: function(){
+        cancel: function() {
             this.transitionToRoute('stockStateSummary');
         },
-        save: function() {
+        submit: function() {
 
-            var self = this;
+            var price = parseFloat(this.get('price'));
+            var volume = parseInt(this.get('volume'));
 
-            var newSellOrder = this.store.createRecord('sellOrder', {
-                price: self.get('price'),
-                volume: self.get('volume')
-                //name: this.get('name')
+            var store = this.store;
+
+            store.createRecord('sellOrder', {
+                price: price,
+                volume: volume
             });
-            newSellOrder.save();
-
-            var company = self.get('model');
-            company.get('sellOrders').pushObject(newSellOrder); //to add newBidOrder object to the company object
-            company.save();
-
-            console.log('just created and saved new sell order');
-            this.transitionToRoute('stockStateSummary');
         }
 
-    }//,
-    //logoUrl: function() {
-    //    var company = this.get('controllers.marketDepth.model');
-    //    var symbol = company.get('symbolURL');
-    //    return  symbol;
-    //}.property('controllers.marketDepth.model')
+    }
 });
+
+function sellThings(sellVolume, sharesVolume) {
+
+    if (sellVolume > sharesVolume) {
+
+        item.set('numberOfShares', sellVolume - sharesVolume);
+        var currentVolume = company.get('shareVolume');
+        company.set('shareVolume', parseInt(currentVolume) + parseInt(sharesVolume));
+        sharesVolume = 0;
+
+    } else if (sellVolume == sharesVolume) {
+
+        var currentVolume = company.get('shareVolume');
+        company.set('shareVolume', parseInt(currentVolume) + parseInt(sharesVolume));
+        sharesVolume = 0;
+        toDelete.push(item);
+
+    } else if (sellVolume < sharesVolume) {
+
+        var currentVolume = company.get('shareVolume');
+        company.set('shareVolume', parseInt(currentVolume) + parseInt(sellVolume));
+        sharesVolume = sharesVolume - sellVolume;
+        toDelete.push(item);
+
+    }
+}
