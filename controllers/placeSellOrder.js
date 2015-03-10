@@ -16,39 +16,45 @@ StockMarketApplication.PlaceSellOrderController = Ember.ObjectController.extend(
             var price = parseFloat(this.get('price'));
             var volume = parseInt(this.get('volume'));
 
-            var store = this.store;
-
-            store.createRecord('sellOrder', {
+            this.store.createRecord('sellOrder', {
                 price: price,
                 volume: volume
             });
+
+            var bids = this.get('model').get('buyOrders');
+            console.log(bids);
+
+            bids.forEach(function(item, index) {
+                console.log(item);
+            });
+
+
+
+
+            if (volume > sharesVolume) {
+
+                item.set('numberOfShares', volume - sharesVolume);
+                var currentVolume = company.get('shareVolume');
+                company.set('shareVolume', parseInt(currentVolume) + parseInt(sharesVolume));
+                sharesVolume = 0;
+
+            } else if (volume == sharesVolume) {
+
+                var currentVolume = company.get('shareVolume');
+                company.set('shareVolume', parseInt(currentVolume) + parseInt(sharesVolume));
+                sharesVolume = 0;
+                toDelete.push(item);
+
+            } else if (volume < sharesVolume) {
+
+                var currentVolume = company.get('shareVolume');
+                company.set('shareVolume', parseInt(currentVolume) + parseInt(volume));
+                sharesVolume = sharesVolume - volume;
+                toDelete.push(item);
+
+            }
+
         }
 
     }
 });
-
-function sellThings(sellVolume, sharesVolume) {
-
-    if (sellVolume > sharesVolume) {
-
-        item.set('numberOfShares', sellVolume - sharesVolume);
-        var currentVolume = company.get('shareVolume');
-        company.set('shareVolume', parseInt(currentVolume) + parseInt(sharesVolume));
-        sharesVolume = 0;
-
-    } else if (sellVolume == sharesVolume) {
-
-        var currentVolume = company.get('shareVolume');
-        company.set('shareVolume', parseInt(currentVolume) + parseInt(sharesVolume));
-        sharesVolume = 0;
-        toDelete.push(item);
-
-    } else if (sellVolume < sharesVolume) {
-
-        var currentVolume = company.get('shareVolume');
-        company.set('shareVolume', parseInt(currentVolume) + parseInt(sellVolume));
-        sharesVolume = sharesVolume - sellVolume;
-        toDelete.push(item);
-
-    }
-}
