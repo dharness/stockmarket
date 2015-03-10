@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Stock Market Application</title>
+
+    <link rel="stylesheet" href="CSS/foundation.min.css">
+
+    <script src="libs/jquery-1.11.2.min.js"></script>
+    <script src="libs/handlebars-v2.0.0.js"></script>
+    <script src="libs/ember.js"></script>
+
+    <script src="libs/ember-handlebars-loader-0.0.1.js"></script>
+    <script src="libs/ember-data.js"></script>
+    <script src="libs/localstorage-adapter-0.3.2.js"></script>
+
+    <!--General Files  -->
+    <script src="stockMarketApplication.js"></script>
+    <script src="router.js"></script>
+
+    <!--Controllers-->
+    <script src="controllers/placeBidOrder.js"></script>
+    <script src="controllers/placeSellOrder.js"></script>
+    <script src="controllers/stockStateSummary.js"></script>
+    <script src="controllers/symbol.js"></script>
+    <script src="controllers/marketByOrder.js"></script>
+    <script src="controllers/marketByPrice.js"></script>
+
+    <!--Models ( those VS ones ;) )-->
+    <script src="models/company.js"></script>
+    <script src="models/buyOrder.js"></script>
+    <script src="models/sellOrder.js"></script>
+
+    <!-- Companies Fixture data -->
+    <script src="companyData.js"></script>
+
+    <!--Routes-->
+    <script src="routes/application.js"></script>
+
+    <!--<script src="routes/company.js"></script>-->
+    <script src="routes/placeBidOrder.js"></script>
+    <script src="routes/placeSellOrder.js"></script>
+    <script src="routes/stockStateSummary.js"></script>
+    <script src="routes/marketByOrder.js"></script>
+    <script src="routes/marketByPrice.js"></script>
+    <script src="routes/marketDepth.js"></script>
+
+    <script>
+        EmberHandlebarsLoader.loadTemplates([
+            'application', 'stockStateSummary', 'placeBidOrder', 'placeSellOrder', 'marketDepth', 'marketByOrder', 'marketByPrice', 'symbol'
+        ]);
+    </script>
+
+</head>
+<body>
+
+</body>
+</html>

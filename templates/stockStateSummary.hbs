@@ -1,0 +1,44 @@
+</br>
+<nav class="top-bar" data-topbar role="navigation">
+    <section class="top-bar-section">
+        <!-- Left Nav Section -->
+        <ul class="left">
+            <li><a href="#" {{action 'sortBy' 'shareVolume:desc'}}> Most Active by Volume</a></li>
+            <li><a href="#" {{action 'gainersSort'}}> Gainers</a></li>
+            <li><a href="#" {{action 'losersSort'}}> Losers</a></li>
+        </ul>
+    </section>
+</nav>
+
+<table  id="stock-market-summary" width="100%" style="margin:0;">
+    <thead>
+    <tr>
+        <th width = "16.67%">Company</th>
+        <th width = "16.67%">Open Price</th>
+        <th width = "16.67%">Current Price</th>
+        <th width = "16.67%">Change <br> Value - %</th>
+        <th width = "16.67%">Share Volume</th>
+        <th>Order</th>
+    </tr>
+    </thead>
+    </table>
+<div class='market-table' margin-top="0px">
+    <table width="100%" id='stock-table-body' >
+    <tbody>
+    {{#each company in sortedCompanies}}
+        <tr>
+            <td width = "16.67%">{{#link-to 'marketDepth' company.id}}{{company.name}}{{/link-to}}</td>
+            <td width = "16.67%">{{company.openPrice}}</td>
+            <td width = "16.67%">calc this value</td>
+            <td width = "16.67%">calc this value</td>
+            <td width = "16.67%">{{company.shareVolume}}</td>
+            <td>
+                <a href="#" class="button round" {{action 'buy' company.id}}>Buy</a>
+                <a href="#" class="button round" {{action 'sell' company.id}}>Sell</a>
+            </td>
+        </tr>
+    {{/each}}
+
+    </tbody>
+    </table>
+</div>

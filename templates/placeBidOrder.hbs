@@ -1,0 +1,50 @@
+<br>
+<br>
+<br>
+<div class="row">
+    <div class="small-6 small-centered large-centered columns">
+        <div class="panel">
+            <h2><strong>Place Bid order for...</strong></h2>
+        </div>
+    </div>
+</div>
+
+<!--Symbol-->
+<div class="row">
+    <div class="small-6 small-centered large-centered columns">
+        <div class="overlay-container">
+            <div class="overlay">{{name}}</div>
+            <div style="max-width:200px">
+                <img {{bind-attr src="logoUrl"}} alt="Logo">
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--Text Fields-->
+<div class="row">
+    <form>
+        <div class="row">
+            <div class="small-6 small-centered large-centered columns">
+                <label>Number of Shares
+                    {{input value=volume  id="volume" type="number" }}
+                </label>
+            </div>
+            <div class="small-6 small-centered large-centered columns">
+                <label>Purchase Price
+                    {{input value=price id="price" type="number" }}
+                </label>
+            </div>
+        </div>
+    </form>
+</div>
+
+<!-- (Belly) Buttons-->
+<div class="row">
+    <div class="small-6 small-centered large-centered columns">
+        <a href="#" class="button radius" {{action 'save'}}>Submit</a>
+        <a href="#" class="button radius" {{action 'cancel'}}>Cancel</a>
+    </div>
+</div>
+
+</div>
