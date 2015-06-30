@@ -2,11 +2,11 @@
 
 I will admit, I only made this application because I had to for school. No body really has any use for it - and for that reason I lobbied hard to get the project changed. When my professor would not accomodate I lobbied for students to be allowed to use any front end MVC, in particular AngularJS. This too was denied and emberJS was used.
 
-![Alt text](shots/grid.jpg?raw=true "Optional Title")
+![Alt text](shots/grid.png?raw=true "Optional Title")
 
-![Alt text](shots/apple.jpg?raw=true "Optional Title")
+![Alt text](shots/apple.png?raw=true "Optional Title")
 
-![Alt text](shots/intel.jpg?raw=true "Optional Title")
+![Alt text](shots/intel.png?raw=true "Optional Title")
 
 ### The Need
 
